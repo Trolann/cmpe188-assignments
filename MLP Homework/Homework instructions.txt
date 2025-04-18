@@ -1,0 +1,5 @@
+Use the Boston dataset and design a regression model using MLP regressor.
+
+Compare the results with MLR model using cross validation.
+
+Comment on the MLP regressor architecture and its relationship with overfitting.

@@ -42,7 +42,7 @@ def data_info(_data, show_scatter=False):
             percent_unique = len(_data[column].unique()) / _data.shape[0] * 100
             print(f'{column} % unique values: {percent_unique}')
     print(_data.describe())
-    _data.hist()
+    _data.hist(figsize=(12, 10))
     plt.tight_layout()
     plt.show()
     plt.figure()  # new plot
@@ -60,6 +60,7 @@ def data_info(_data, show_scatter=False):
 
     print(corMat)
     ## plot correlation matrix as a heat map
+    plt.figure(figsize=(14, 10))
     heatmap(corMat, square=True)
     plt.yticks(rotation=0)
     plt.xticks(rotation=90)
@@ -240,3 +241,13 @@ for column in columns_to_log_transform:
 normalizer = MinMaxScaler()
 for column in columns_to_normalize:
     kickstarter[column] = normalizer.fit_transform(kickstarter[[column]])
+
+
+from sklearn.model_selection import train_test_split
+
+X = kickstarter.copy()
+Y1 = kickstarter['SuccessfulBool']
+X = X.drop(columns=['SuccessfulBool'])
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, Y1, test_size=0.2, random_state=42)

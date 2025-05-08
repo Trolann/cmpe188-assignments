@@ -247,7 +247,7 @@ from sklearn.model_selection import train_test_split
 
 X = kickstarter.copy()
 Y1 = kickstarter['SuccessfulBool']
-X = X.drop(columns=['SuccessfulBool', 'backers_count'])
+X = X.drop(columns=['SuccessfulBool'])
 
 # Split the data
 X_train, X_test, y_train, y_test = train_test_split(X, Y1, test_size=0.2, random_state=42)
